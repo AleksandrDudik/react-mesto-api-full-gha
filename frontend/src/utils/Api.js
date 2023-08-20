@@ -90,9 +90,10 @@ class Api {
 
 
 export const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-65',
+  url: 'https://api.dudik.nomoredomainsicu.ru',
   headers: {
-      authorization: 'f044fe90-0b5c-4930-9def-569136b06e9a',
+      'Accept': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
       'Content-Type': 'application/json',
   },
 });
