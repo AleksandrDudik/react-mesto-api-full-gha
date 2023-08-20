@@ -1,0 +1,6 @@
+.popup__zoom-card{
+  margin: 0 auto;
+  max-width: 75vw;
+  max-height: 75vh;
+  border: none;
+}

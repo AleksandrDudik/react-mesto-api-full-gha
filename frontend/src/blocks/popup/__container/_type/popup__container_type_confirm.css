@@ -1,0 +1,22 @@
+.popup__container_type_confirm{
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  min-width: 282px;
+  height: min(208px, calc(100vh - 100px));
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+@media screen and (max-width: 700px){
+  .popup__container_type_confirm{
+    height: min(200px, calc(100vh - 70px));
+  }
+}
+
+@media screen and (max-width: 430px){
+  .popup__container_type_confirm{
+    width: calc(100% - 38px);
+  }
+}

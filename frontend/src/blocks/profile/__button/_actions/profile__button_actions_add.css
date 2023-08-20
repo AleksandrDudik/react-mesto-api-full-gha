@@ -1,0 +1,33 @@
+.profile__button_actions_add{
+  border: 2px solid white;
+  margin-left: auto;
+  width: 150px;
+  height: 50px;
+  background-image: url(../../../../images/button-add.svg);
+  background-size: 22px;
+  justify-self: flex-end;
+}
+
+.profile__button_actions_add:hover{
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 980px){
+  .profile__button_actions_add{
+    width: 20%;
+    background-size: 16px;
+  }
+}
+
+@media screen and (max-width: 685px){
+  .profile__button_actions_add{
+    margin-top: 36px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 350px){
+  .profile__button_actions_add{
+    max-width: 282px;
+  }
+}

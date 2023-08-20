@@ -1,0 +1,29 @@
+.popup__input{
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  padding: 12px 0;
+  padding-top: 0;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  color: black;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 17px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.popup__input:focus{
+  outline: 0;
+}
+
+@media screen and (max-height: 400px){
+  .popup__input{
+    padding: 8px 0;
+    padding-top: 0;
+  }
+}

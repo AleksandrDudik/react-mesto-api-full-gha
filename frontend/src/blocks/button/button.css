@@ -1,0 +1,9 @@
+.button{
+  padding: 0;
+  transition: .7s ease;
+  box-sizing: border-box;
+}
+
+.button:hover{
+  cursor: pointer;
+}
