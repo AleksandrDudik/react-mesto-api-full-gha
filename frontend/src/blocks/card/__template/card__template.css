@@ -1,0 +1,12 @@
+.card__template{
+  margin: 0 auto;
+  width: 282px;
+  min-height: 361px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative; 
+}

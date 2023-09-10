@@ -1,0 +1,15 @@
+.profile__info{
+  display: grid;
+  grid-template-areas:
+    "name editButton"
+    "prof .";
+  grid-template-columns: 1fr min-content;
+  column-gap: 18px;
+  align-items: baseline;
+}
+
+@media screen and (max-width: 535px){
+  .profile__info{
+    margin: 0 0 0 36px;
+  }
+}
