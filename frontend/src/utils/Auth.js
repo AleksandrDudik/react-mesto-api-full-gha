@@ -12,7 +12,7 @@ export const register = ( password, email ) => {
     }
   )
     .then((res) => {
-      if (res.status === 200) {
+      if (res.ok) {
         return res.json();
       } else {
         return Promise.reject(res);
@@ -32,7 +32,7 @@ export const authorize = ( password, email ) => {
     }
   )
     .then((res) => {
-      if (res.status === 200) {
+      if (res.ok) {
         return res.json();
       } else {
         return Promise.reject(res);
@@ -57,7 +57,7 @@ export const checkToken = (token) => {
   })
     .then((res) => {
       try {
-        if (res.status === 200) {
+        if (res.ok) {
           return res.json();
         }
         if (res.status === 400) {

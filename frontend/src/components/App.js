@@ -140,6 +140,7 @@ function App() {
       .then((data) => {
         setLoggedIn(true);
         localStorage.setItem('jwt', data.token);
+        tokenCheck();
         history.push('/');
         setEmail(email);
       })
@@ -189,7 +190,7 @@ function App() {
 
   React.useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [loggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
