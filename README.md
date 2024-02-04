@@ -11,7 +11,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.27.24
+IP-адрес 84.201.143.238
 
 Frontend https://dudik.nomoredomainsicu.ru
 
