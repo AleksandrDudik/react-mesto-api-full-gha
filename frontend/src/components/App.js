@@ -145,6 +145,7 @@ function App() {
         setEmail(email);
       })
       .catch((err) => {
+        setIsInfoTooltipOpen(true);
         if (err.status === 400) {
           setMessage({ img: failure, text: 'Не передано одно из полей'});
         } else if (err.status === 401) {
@@ -152,19 +153,19 @@ function App() {
         } else {
           setMessage({ img: failure, text: 'Что-то пошло не так! Попробуйте ещё раз'});
         }
-      })
-      .finally(() => setIsInfoTooltipOpen(true));
+      });
   }
 
   function handleRegistration(password, email) {
     auth.register(password, email)
       .then((res) => {
-        setEmail(res.data.email);
         setMessage({ img: success, text: 'Вы успешно зарегистрировались!' });
         history.push('/sign-in');
       })
-      .catch(() => setMessage({ img: failure, text: 'Некорректно заполнено одно из полей' }))
-      .finally(() => setIsInfoTooltipOpen(true));
+      .catch(() => {
+       setIsInfoTooltipOpen(true); 
+       setMessage({ img: failure, text: 'Некорректно заполнено одно из полей' });
+      });
   }
 
   function onSignOut() {

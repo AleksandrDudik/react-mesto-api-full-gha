@@ -1,7 +1,6 @@
 class Api {
   constructor(config) {
       this._url = config.url;
-      this._headers = config.headers;
   }
 
   _checkResponse(res) {
@@ -11,26 +10,26 @@ class Api {
       return Promise.reject(`Œ¯Ë·Í‡: ${res.status}`);
   }
 
-  getCards() {
+  getCards(token) {
       return fetch(this._url + '/cards', {
               method: 'GET',
-              headers: this._headers
+              headers: { authorization: `Bearer ${token}`}
           })
           .then(this._checkResponse);
   }
 
-  getApiUserInfo() {
+  getApiUserInfo(token) {
       return fetch(this._url + '/users/me', {
               method: 'GET',
-              headers: this._headers
+              headers: { authorization: `Bearer ${token}`}
           })
           .then(this._checkResponse);
   }
 
-  setApiUserInfo(data) {
+  setApiUserInfo(data, token) {
       return fetch(this._url + '/users/me', {
               method: 'PATCH',
-              headers: this._headers,
+              headers: { authorization: `Bearer ${token}`},
               body: JSON.stringify({
                   name: data.name,
                   about: data.about
@@ -39,10 +38,10 @@ class Api {
           .then(this._checkResponse);
   }
 
-  postCards(data) {
+  postCards(data, token) {
       return fetch(this._url + '/cards', {
               method: 'POST',
-              headers: this._headers,
+              headers: { authorization: `Bearer ${token}`},
               body: JSON.stringify({
                   name: data.name,
                   link: data.link
@@ -51,18 +50,18 @@ class Api {
           .then(this._checkResponse);
   }
 
-  deleteCard(data) {
+  deleteCard(data, token) {
       return fetch(this._url + `/cards/${data}`, {
               method: 'DELETE',
-              headers: this._headers,
+              headers: { authorization: `Bearer ${token}`},
           })
           .then(this._checkResponse);
   }
 
-  setAvatar(data) {
+  setAvatar(data, token) {
       return fetch(this._url + '/users/me/avatar', {
               method: 'PATCH',
-              headers: this._headers,
+              headers: { authorization: `Bearer ${token}`},
               body: JSON.stringify({
                   avatar: data.avatar
               })
@@ -70,18 +69,18 @@ class Api {
           .then(this._checkResponse);
   }
 
-  changeLikeCardStatus(id, isLiked) {
+  changeLikeCardStatus(id, isLiked, token) {
         return fetch(this._url + `/cards/likes/${id}`, {
             method: `${isLiked ? 'PUT' : 'DELETE'}`,
-            headers: this._headers,
+            headers: { authorization: `Bearer ${token}`},
         })
             .then(this._checkResponse);
     }
 
-  deleteLike(data) {
+  deleteLike(data, token) {
       return fetch(this._url + `/cards/likes/${data}`, {
               method: 'DELETE',
-              headers: this._headers,
+              headers: { authorization: `Bearer ${token}`},
           })
           .then(this._checkResponse);
   }
@@ -93,7 +92,7 @@ export const api = new Api({
   url: 'https://api.dudik.nomoredomainsicu.ru',
   headers: {
       'Accept': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
       'Content-Type': 'application/json',
   },
 });
