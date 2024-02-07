@@ -13,23 +13,32 @@ class Api {
   getCards(token) {
       return fetch(this._url + '/cards', {
               method: 'GET',
-              headers: { authorization: `Bearer ${token}`}
+              headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+              }
           })
           .then(this._checkResponse);
   }
 
-  getApiUserInfo(token) {
+  getApiUserInfo() {
       return fetch(this._url + '/users/me', {
               method: 'GET',
-              headers: { authorization: `Bearer ${token}`}
+              headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+              }
           })
           .then(this._checkResponse);
   }
 
-  setApiUserInfo(data, token) {
+  setApiUserInfo(data) {
       return fetch(this._url + '/users/me', {
               method: 'PATCH',
-              headers: { authorization: `Bearer ${token}`},
+              headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+              },
               body: JSON.stringify({
                   name: data.name,
                   about: data.about
@@ -38,10 +47,13 @@ class Api {
           .then(this._checkResponse);
   }
 
-  postCards(data, token) {
+  postCards(data) {
       return fetch(this._url + '/cards', {
               method: 'POST',
-              headers: { authorization: `Bearer ${token}`},
+              headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+              },
               body: JSON.stringify({
                   name: data.name,
                   link: data.link
@@ -50,18 +62,24 @@ class Api {
           .then(this._checkResponse);
   }
 
-  deleteCard(data, token) {
+  deleteCard(data) {
       return fetch(this._url + `/cards/${data}`, {
               method: 'DELETE',
-              headers: { authorization: `Bearer ${token}`},
+              headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+              }
           })
           .then(this._checkResponse);
   }
 
-  setAvatar(data, token) {
+  setAvatar(data) {
       return fetch(this._url + '/users/me/avatar', {
               method: 'PATCH',
-              headers: { authorization: `Bearer ${token}`},
+              headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+              },
               body: JSON.stringify({
                   avatar: data.avatar
               })
@@ -69,18 +87,24 @@ class Api {
           .then(this._checkResponse);
   }
 
-  changeLikeCardStatus(id, isLiked, token) {
+  changeLikeCardStatus(id, isLiked) {
         return fetch(this._url + `/cards/likes/${id}`, {
             method: `${isLiked ? 'PUT' : 'DELETE'}`,
-            headers: { authorization: `Bearer ${token}`},
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${localStorage.getItem('jwt')}`
+            }
         })
             .then(this._checkResponse);
     }
 
-  deleteLike(data, token) {
+  deleteLike(data) {
       return fetch(this._url + `/cards/likes/${data}`, {
               method: 'DELETE',
-              headers: { authorization: `Bearer ${token}`},
+              headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${localStorage.getItem('jwt')}`
+              }
           })
           .then(this._checkResponse);
   }
@@ -88,11 +112,4 @@ class Api {
 }
 
 
-export const api = new Api({
-  url: 'https://api.dudik.nomoredomainsicu.ru',
-  headers: {
-      'Accept': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      'Content-Type': 'application/json',
-  },
-});
+export const api = new Api({ url: 'https://api.dudik.nomoredomainsicu.ru' });

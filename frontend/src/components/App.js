@@ -165,7 +165,8 @@ function App() {
       .catch(() => {
        setIsInfoTooltipOpen(true); 
        setMessage({ img: failure, text: 'Некорректно заполнено одно из полей' });
-      });
+      })
+      .finally(()=>{ setIsInfoTooltipOpen(true) });
   }
 
   function onSignOut() {
@@ -182,7 +183,7 @@ function App() {
           if(res) {
             setLoggedIn(true);
             setEmail(res.data.email);
-            history.push('/');
+            history.push('/', { replace: true });
           }
         })
         .catch((err) => console.log(err));
